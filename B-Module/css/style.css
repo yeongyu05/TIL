@@ -4,7 +4,6 @@ i {font-size: 2rem !important; cursor: pointer;}
 li {list-style: none;}
 img {vertical-align: middle;}
 button{cursor: pointer;}
-.stars > i {font-size: 1.4rem !important;}
 
 .none {display: none;}
 .block {display: block;}
@@ -114,14 +113,20 @@ h3 {text-align: center;}
 .reviewImg {width: 1440px; margin: 25px auto; text-align: center;}
 table {width: 1440px; margin: 50px auto; text-align: center;}
 table img {object-fit: cover; width: 100px; height: 100px; margin: 0 auto;}
-table tbody td {padding: 0 1rem; text-align: center; border-top: 1px solid #333;}
+table tbody td {text-align: center; border-top: 1px solid #333;}
 table .content p {width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin: 0 auto;}
 .write {position: fixed; width: 100px; line-height: 40px; background: #0ef; bottom: 50px; right: 50px; border: none; border-radius: 5px;}
 section#review > table tr, section#review > table td {width: 200px;}
 
 /* reviewModal */
 .reviewModal {position: fixed; top: 0; bottom: 0; left: 0; right: 0; background: rgba(0, 0, 0, .5);}
-.reviewModal > form {position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 500px; height: 700px; padding: 30px; background: #fff; border-radius: 5px; display: flex; flex-direction: column; gap: 1rem; justify-content: space-around;}
-.reviewModal > form > div {text-align: center; display: flex; flex-direction: column; justify-content: space-around;}
-.reviewModal > form > div > label {text-align: start; width: 300px; margin: 0 auto;}
-.reviewModal > form > div > input, .reviewModal > form > div > button {width: 300px; height: 25px; margin: 10px auto;}
+.reviewModal > form {position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 400px; padding: 30px; background: #fff; border-radius: 5px; display: flex; flex-direction: column; gap: 2rem; justify-content: space-around;}
+.reviewModal > form > div {text-align: center; display: flex; flex-direction: column; gap: 10px;}
+.reviewModal > form > .item {height: 60px;}
+.reviewModal > form > div > label {text-align: start; width: 300px; margin: 0 auto; display: block;}
+.reviewModal > form > div > input, .reviewModal > form > div > button, .reviewModal > form > div > textarea {width: 300px; height: 30px; margin: 0 auto;}
+.rotate {transform: rotateY(180deg); margin-left: -9px}
+.reviewModal > form > .inputFile > input[type="button"] {margin-bottom: 5px;}
+.stars > i {color: #aaa; display: inline-block !important;}
+.stars > i.active {color: #000;}
+.stars > div {width: 30px; height: 27px; display: inline-block; transform: translateY(3px); margin-left: -30px;}

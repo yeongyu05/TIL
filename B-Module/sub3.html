@@ -63,7 +63,7 @@
                 <tbody>
                     <tr>
                         <td class="img"><img src="./images/reviewImg.png" alt="reviewImg"></td>
-                        <td class="stars">
+                        <td class="tableStars">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
@@ -87,39 +87,53 @@
         <button class="write">후기작성</button>
     </div>
     <div class="reviewModal none">
-        <form action="">
-            <div>
+        <form>
+            <div class="item">
                 <label for="name">이름</label>
-                <input type="text" id="name" value="이름">
+                <input type="text" id="name">
             </div>
-            <div>
+            <div class="item">
                 <label for="product">구매품</label>
-                <input type="text" id="product" value="구매품">
+                <input type="text" id="product">
             </div>
-            <div>
+            <div class="item">
                 <label for="place">구매처</label>
-                <input type="text" id="place" value="구매처">
+                <input type="text" id="place">
             </div>
-            <div>
+            <div class="item">
                 <label for="date">구매일</label>
                 <input type="date" id="date">
             </div>
             <div>
                 <label for="content">내용</label>
-                <input type="text" id="content">
+                <textarea type="text" id="content"></textarea>
             </div>
             <div>
                 <label for="stars">별점</label>
                 <div class="stars">
-                    <i class="star fa fa-star"></i><i class="star fa fa-star"></i><i class="star fa fa-star"></i><i class="star fa fa-star"></i><i class="star fa fa-star"></i>
+                    <div class="star" data-star="0"></div>
+                    <i class="star fa fa-star-half" data-star="1"></i>
+                    <i class="star fa fa-star-half rotate" data-star="2"></i>
+                    <i class="star fa fa-star-half" data-star="3"></i>
+                    <i class="star fa fa-star-half rotate" data-star="4"></i>
+                    <i class="star fa fa-star-half" data-star="5"></i>
+                    <i class="star fa fa-star-half rotate" data-star="6"></i>
+                    <i class="star fa fa-star-half" data-star="7"></i>
+                    <i class="star fa fa-star-half rotate" data-star="8"></i>
+                    <i class="star fa fa-star-half" data-star="9"></i>
+                    <i class="star fa fa-star-half rotate" data-star="10"></i>
+                    <input type="number" name="star" id="star" min="0" max="10" class="none">
                 </div>
             </div>
-            <div>
+            <div class="inputFile">
                 <label for="img">사진</label>
-                <input type="file" id="img" accept="image/*">
+                <input type="button" id="img" value="사진추가">
             </div>
             <div>
                 <button type="button">등록</button>
+            </div>
+            <div>
+                <button type="button" class="closeModal">닫기</button>
             </div>
         </form>
     </div>

@@ -29,6 +29,8 @@ const data = [
     if(page === 'review') reviewPage();
 }
 
+const reg = /^[a-zA-Zㄱ-ㅎ가-핳-ㅏ-ㅣ]+$/;
+
 function eventPage() {
     const state = {
         score: 0,
@@ -208,21 +210,25 @@ function eventPage() {
     $('#phone').addEventListener('input', phoneInput);
 }
 
-const reg = /^[a-zA-Zㄱ-ㅎ가-핳-ㅏ-ㅣ]+$/
-
 function reviewPage() {
+    const arr = [];
+
     const upload = () => {
         try{
             if(!reg.test($('#name').value) || $('#name').value.length < 2 || $('#name').value.length > 50)
                 throw '이름은 2글자 이상 50글자 이내의 한글과 영어만 입력이 가능합니다.';
             else if($('#product').value === '')
                 throw '구매품을 입력해주세요';
-            else if($('#place') === '')
+            else if($('#place').value === '')
                 throw '구매처를 입력해주세요';
-            else if($('#date') === '')
+            else if($('#date').value === '')
                 throw '구매일을 입력해주세요';
             else if($('#content').value.length < 100)
                 throw '내용은 100자 이상이어야 합니다';
+            else if($('#star').value === '0')
+                throw '별점을 입력해주세요';
+            else if(!$all('.inputFile > .addFile').some(e => e))
+                throw '사진은 최소 1개 이상 등록해야 합니다.';
         } catch(e) {
             alert(e);
             return;
@@ -234,31 +240,80 @@ function reviewPage() {
             place : $('#place').value,
             date : $('#date').value,
             content : $('#content').value,
+            star : $('#star').value,
             img : []
         }
 
+        $all('.inputFile > .addFile').forEach(e => {
+            let reader = new FileReader();
+            reader.readAsDataURL(e.files[0]);
+            reader.onload = () => {
+                inputValue.img.push(reader.result);
+            }
+        })
+
+        arr.push(inputValue);
         $('.reviewModal').classList.add('none');
 
-        const list = document.createElement('tr');
-        list.innerHTML = `
-            <td class="img"><img src="./images/reviewImg.png" alt="reviewImg"></td>
-            <td class="stars">
-                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-            </td>
-            <td class="name">${inputValue.name}</td>
-            <td class="product">${inputValue.product}</td>
-            <td class="place">${inputValue.place}</td>
-            <td class="date">${inputValue.date}</td>
-            <td class="content">
-                <p>${inputValue.content}</p>
-            </td>
-        `;
-        $('table > tbody').append(list);
+        render();
+    }
+
+    const render = () => {
+        arr.forEach(e => {
+            const list = document.createElement('tr');
+            console.log(list.childNodes);
+            list.innerHTML = `
+                <td class="img"><img src="${e.img[0]}" alt="${e.product}"></td>
+                <td class="name">${arr.name}</td>
+                <td class="product">${arr.product}</td>
+                <td class="place">${arr.place}</td>
+                <td class="date">${arr.date}</td>
+                <td class="content">
+                    <p>${arr.content}</p>
+                </td>
+                <td class="tableStars">`
+                for(let i = 1; i <= e.star; i++) {
+                    list.childNodes[13].innerHTML += `<i class="${i % 2 == 0 ? 'rotate' : true} fa fa=star-half"></i>`
+                }
+                `</td>
+            `;
+            $('table > tbody').append(list);
+        })
     }
     
     const writeClick = () => {
+        $('#name').value = '';
+        $('#product').value = '';
+        $('#place').value = '';
+        $('#date').value = '';
+        $('#content').value = '';
+        $('#star').value = '';
+        $all('.inputFile > .addFile').forEach(e => e.remove());
         $('.reviewModal').classList.remove('none');
     }
+
+    const addImgClick = () => {
+        const inputTag = document.createElement('input');
+        inputTag.type = 'file';
+        inputTag.accept = '.jpg';
+        inputTag.className = 'addFile';
+        $('.inputFile').appendChild(inputTag);
+    }
+
+    const mousemoveHandler = function() {
+        let star = parseInt(this.dataset.star);
+        $all('.stars > .star').forEach(e => {
+            if(e.dataset.star <= star) {
+                e.classList.add('active');
+            } else {
+                e.classList.remove('active');
+            }
+            $('.stars > input').setAttribute('value', star);
+        })
+    }
+
     $('.write').addEventListener('click', writeClick);
     $('.reviewModal button').addEventListener('click', upload);
+    $('#img').addEventListener('click', addImgClick);
+    $all('.stars > .star').forEach(e => e.addEventListener('mousemove', mousemoveHandler));
 }
