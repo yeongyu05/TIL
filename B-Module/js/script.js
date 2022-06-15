@@ -213,14 +213,40 @@ function eventPage() {
 function reviewPage() {
     const arr = [];
 
+    const toggle = () => {
+        $('.reviewModal').classList.toggle('none');
+        $('form').reset();
+    }
+
+    const addImgClick = () => {
+        const inputTag = document.createElement('input');
+        inputTag.type = 'file';
+        inputTag.accept = '.jpg';
+        inputTag.name = 'addImg';
+        $('.image').appendChild(inputTag);
+    }
+
+    const mousemoveHandler = function() {
+        let star = parseInt(this.dataset.star);
+        $all('.stars > i').forEach(e => {
+            if(e.dataset.star <= star) {
+                e.classList.add('active');
+            } else {
+                e.classList.remove('active');
+            }
+            $('form').score.setAttribute('value', star);
+        })
+    }
+
     const upload = async () => {
-        const images = $all('form input[name="addFile"]');
+        const images = $all('input[name="addImg"]');
+        const imgArr = [];
 
         try {
             if($('form').name.value === '')
                 throw "이름은 필수 값 입니다.";
             if($('form').name.value.length < 2 || $('form').name.value.length > 50)
-                throw "이름은 2자 이상 50자 이내의 한글과 영어만 입력이 가능합니다.";
+                throw "이름은 2자 이상 50자 이내의 한글과 영어만 가능합니다.";
             if(!reg.test($('form').name.value))
                 throw "이름은 한글과 영어만 입력이 가능합니다.";
             if($('form').product.value === '')
@@ -229,10 +255,10 @@ function reviewPage() {
                 throw "구매처는 필수 값 입니다.";
             if($('form').date.value === '')
                 throw "구매일은 필수 값 입니다.";
-            if($('form').score.value === '0')
-                throw "별점은 필수 값 입니다.";
             if($('form').content.value === '')
                 throw "내용은 100자 이상 작성해야 합니다.";
+            if($('form').score.value === '0')
+                throw "별점은 필수 값 입니다.";
             if(!images.length || !images.some(e => e.value))
                 throw "사진은 최소 1개이상 등록해야 합니다.";
         } catch(e) {
@@ -244,12 +270,10 @@ function reviewPage() {
             return new Promise(res => {
                 const reader = new FileReader();
                 reader.readAsDataURL(img);
-                reader.onload = () => {res(reader.result)};
+                reader.onload = () => res(reader.result);
             })
         }
-
-        const imgArr = [];
-
+        
         for(const p of images) {
             if(!p.files[0]) continue;
             imgArr.push(await imgSrc(p.files[0]));
@@ -272,58 +296,33 @@ function reviewPage() {
         $all('.stars > i').forEach(e => e.classList.remove('active'));
         images.forEach(e => e.remove());
     }
-    
+
     const render = () => {
         $('tbody').innerHTML = '';
         arr.forEach(ele => {
             const tr = document.createElement('tr');
             const scoreArr = Array.from(Array(parseInt(ele.score)), (_, idx) => {
                 if(idx % 2 == 0) return "<i class='fa fa-star-half'></i>"
-                else return "<i class='fa fa-star-half rotate2'></i>";
+                else return "<i class='fa fa-star-half rotate'></i>";
             })
             tr.innerHTML = `
-                <td class="img"><img src="${ele.img[0]}" alt="${ele.product}"></td>
-                <td class="tableStars">${scoreArr.map(e => e).join('')}</td>
-                <td class="name">${ele.name}</td>
-                <td class="product">${ele.product}</td>
-                <td class="place">${ele.place}</td>
-                <td class="date">${ele.date}</td>
-                <td class="content">
-                    <p>${ele.content}</p>
-                </td>
-            `;
+            <td class="img"><img src="${ele.img[0]}" alt="${ele.product}"></td>
+            <td class="tableStars">${scoreArr.map(e => e).join('')}</td>
+            <td class="name">${ele.name}</td>
+            <td class="product">${ele.product}</td>
+            <td class="place">${ele.place}</td>
+            <td class="date">${ele.date}</td>
+            <td class="content">
+                <p>${ele.content}</p>
+            </td>
+            `
             $('table > tbody').appendChild(tr);
         })
     }
-    
-    const toggle = () => {
-        $('.reviewModal').classList.toggle('none');
-        $('form').reset();
-    }
 
-    const addImgClick = () => {
-        const inputTag = document.createElement('input');
-        inputTag.type = 'file';
-        inputTag.accept = '.jpg';
-        inputTag.name = 'addFile';
-        $('.inputFile').appendChild(inputTag);
-    }
-
-    const mousemoveHandler = function() {
-        let star = parseInt(this.dataset.star);
-        $all('.stars > i').forEach(e => {
-            if(e.dataset.star <= star) {
-                e.classList.add('active');
-            } else {
-                e.classList.remove('active');
-            }
-            $('form').score.setAttribute('value', star);
-        })
-    }
-
-    $('.write').addEventListener('click', toggle);
-    $('.closeModal').addEventListener('click', toggle);
-    $('#img').addEventListener('click', addImgClick);
-    $('.reviewModal button').addEventListener('click', upload);
+    $('.review').addEventListener('click', toggle);
+    $('.closeBtn > input').addEventListener('click', toggle);
+    $('form').addImgBtn.addEventListener('click', addImgClick);
     $all('.stars > i').forEach(e => e.addEventListener('mousemove', mousemoveHandler));
+    $('.uploadBtn > input').addEventListener('click', upload);
 }
