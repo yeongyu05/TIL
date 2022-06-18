@@ -1,0 +1,24 @@
+* {margin: 0; padding: 0; box-sizing: border-box; color: #333; font-family: sans-serif;}
+i {font-size: 2rem !important;}
+.none {display: none;}
+
+#app > table {width: 1440px; margin: 100px auto 0; border-collapse: collapse; border-spacing: 0;}
+#app > table > thead > tr > th {width: calc(100% / 7); padding: 1rem 0; border-bottom: 1px solid #333;} 
+#app > table > tbody > tr > td {text-align: center; padding: 1rem 0; border-bottom: 1px solid #333;}
+#app > table > tbody > tr > td > img {width: 100px; height: 100px; object-fit: cover;}
+#app > table > tbody > tr > td > p {overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 200px; margin: 0 auto;}
+#app > .review {position: fixed; bottom: 100px; right: 100px; background: #ffc500; width: 100px; height: 40px; border: none; border-radius: 5px; cursor: pointer;}
+#app > table > tbody > tr > td > i.rotate {transform: rotateY(-180deg); margin-left: -4px;}
+
+.reviewModal {position: fixed; top: 0; bottom: 0; left: 0; right: 0; background: rgba(0, 0, 0, 0.5);}
+.reviewModal > form {position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #fff; padding: 30px; display: flex; flex-direction: column; gap: 10px;}
+.reviewModal > form > div {display: flex; flex-direction: column;}
+.reviewModal > form > div > input {width: 250px; padding: 0.5rem;}
+.reviewModal > form > .content > textarea {padding: 0.5rem;}
+.reviewModal > form > .rating > .stars {text-align: center;}
+.reviewModal > form > .rating > .stars > .noneStar {width: 32px; height: 32px; display: inline-block; transform: translate(5px, 3px); margin-left: -32px;}
+.reviewModal > form > .rating > .stars > i {color: #aaa;}
+.reviewModal > form > .rating > .stars > i.active {color: #000;}
+.reviewModal > form > .rating > .stars > i.rotate {transform: rotateY(-180deg); margin-left: -8px;}
+.reviewModal > form > .btnContainer {display: flex; flex-direction: row; justify-content: space-between;}
+.reviewModal > form > .btnContainer > input {width: 120px; padding: 0.5rem;}
