@@ -1,0 +1,24 @@
+* {margin: 0 auto; padding: 0; box-sizing: border-box; color: #333; font-family: sans-serif;}
+#app {width: 100vw; height: 100vh; padding: 25px;}
+.flex {display: flex;}
+.grid {display: grid;}
+.none {display: none;}
+.rel {position: relative;}
+.abs {position: absolute;}
+img {vertical-align: middle; object-fit: cover; width: 100%; height: 100%;}
+
+.board {grid-template-columns: repeat(4, 125px); width: 530px; height: 730px; gap: 10px;}
+.board > .card {width: 125px; height: 175px; perspective: 500px; border: 1px solid #333; border-radius: 10px;}
+.board > .card > .cards {width: 100%; height: 100%; border-radius: 10px; overflow: hidden; backface-visibility: hidden; transition: .5s;}
+.board > .card > .cards > .img {width: 100%; height: 100%;}
+.board > .card > .cards > .img > p {top: 125px; bottom: 25px; left: 0; right: 0; text-align: center; background: rgba(0, 0, 0, 0.5); color: #fff; display: none;}
+.state > div {width: 530px; justify-content: space-around;}
+.state button {width: 125px; height: 40px; margin: 25px 0;}
+
+.board > .card > .front {transform: rotateY(-180deg); background: green;}
+.board > .card > .back {transform: rotateY(0deg); background: #ccc;}
+.board > .card.active > .front, .board > .card.success > .front {transform: rotateY(0deg);}
+.board > .card.active > .back, .board > .card.success > .back {transform: rotateY(180deg);}
+.board > .card.end {border: 3px solid red;}
+.board > .card.success.end {border: 3px solid blue;}
+.board > .card.success > .front > .img > p {display: block;}
