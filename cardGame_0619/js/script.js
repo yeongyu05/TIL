@@ -23,11 +23,13 @@ const data = [
     {location: '합천군', name: '돼지고기', img: '합천군_돼지고기'}
 ];
 
-{
-    let page = $('section').id;
-    if(page === 'event') eventPage();
-    if(page === 'review') reviewPage();
-}
+// {
+//     let page = $('section').id;
+//     if(page === 'event') eventPage();
+//     if(page === 'review') reviewPage();
+// }
+
+eventPage();
 
 const reg = /^[a-zA-Zㄱ-ㅎ가-핳-ㅏ-ㅣ]+$/;
 
@@ -37,39 +39,23 @@ function eventPage() {
         cardClick: null,
         interval: null,
         timeout: null,
+        start: false,
         card: false,
-        start: false
-    }
-
-    const startClick = async () => {
-        setting();
-        hint(5);
-        await timer(0, 5);
-        $('.startBtn').classList.add('none');
-        $('.reStartBtn').classList.remove('none');
-        await timer(1, 30);
-        gameEnd();
-    }
-
-    const setting = () => {
-        const imgSlice = data.sort(() => Math.random() - 0.5).slice(0, 8);
-        const imgData = [...imgSlice, ...imgSlice].sort(() => Math.random() - 0.5);
-        $all('.card').forEach((ele, idx) => {
-            ele.querySelector('.front').innerHTML = `
-                <div class="img">
-                    <img src="./special/${imgData[idx].img}.jpg" alt="${imgData[idx].name}" title="${imgData[idx].location}">
-                    <p class="abs">${imgData[idx].location}</p>
-                </div>
-            `;
-            ele.addEventListener('click', cardClick);
-        })
+        play: false,
+        replay: false
     }
 
     const hint = sec => {
+        if(!state.start) return;
+        state.start = false;
+        state.card = false;
+        state.cardClick = null;
         $all('.card').forEach(e => e.classList.add('active'));
         clearTimeout(state.timeout);
         state.timeout = setTimeout(() => {
             $all('.card').forEach(e => e.classList.remove('active'));
+            state.start = true;
+            state.card = true;
         }, 1000 * sec);
     }
 
@@ -85,7 +71,8 @@ function eventPage() {
                     sec = 59;
                     $('.min').innerText = min;
                     $('.sec').innerText = sec;
-                } else if(sec < 0 && min <= 0) {
+                } else if(sec < 0 && min === 0) {
+                    clearInterval(state.interval);
                     res();
                 } else {
                     $('.min').innerText = min;
@@ -96,48 +83,105 @@ function eventPage() {
     }
 
     const cardClick = function() {
+        if(findClass(this, 'active') || !state.card) return;
         this.classList.add('active');
         if(!state.cardClick) {
             state.cardClick = this;
             clearTimeout(state.timeout);
             state.timeout = setTimeout(() => {
-                state.cardClick.classList.remove('active');
+                state.cardClick?.classList.remove('active');
+                this.classList.remove('active');
                 state.cardClick = null;
             }, 3000);
         } else {
-            const before = state.cardClick.dataset.card;
-            const after = this.dataset.card;
+            const before = state.cardClick.dataset.name;
+            const after = this.dataset.name;
             if(before === after) {
                 state.cardClick.classList.add('success');
                 this.classList.add('success');
                 state.cardClick = null;
-                state.score++;
-                $('.score').innerText = state.score;
+                $('.score').innerText = ++state.score;
                 if(state.score === 8) gameEnd();
             } else {
+                state.card = false;
                 clearTimeout(state.timeout);
                 state.timeout = setTimeout(() => {
                     state.cardClick.classList.remove('active');
                     this.classList.remove('active');
+                    state.cardClick = null;
+                    state.card = true;
                 }, 1000);
-                state.cardClick = null;
             }
         }
     }
 
+    const setting = () => {
+        const imgSlice = data.sort(() => Math.random() - 0.5).slice(0, 8);
+        const imgData = [...imgSlice, ...imgSlice].sort(() => Math.random() - 0.5);
+        $all('.card').forEach((ele, idx) => {
+            ele.dataset.name = imgData[idx].name
+            ele.querySelector('.front').innerHTML = `
+                <div class="img">
+                    <img src="./special/${imgData[idx].img}.jpg" alt="${imgData[idx].img}" title="${imgData[idx].name}">
+                    <p class="abs">${imgData[idx].location}</p>
+                </div>
+            `;
+            ele.addEventListener('click', cardClick);
+        })
+    }
+
+    const startClick = async () => {
+        if(state.play) return;
+        reset();
+        state.play = true;
+        state.start = true;
+        hint(5);
+        setting();
+        await timer(0, 5);
+        state.play = false;
+        state.card = true;
+        state.replay = true;
+        $('.startBtn').classList.add('none');
+        $('.reStartBtn').classList.remove('none');
+        await timer(1, 30);
+        gameEnd();
+        state.start = false;
+        state.card = false;
+    }
+    
     const gameEnd = () => {
         clearInterval(state.interval);
         clearTimeout(state.timeout);
         $all('.card').forEach(e => {
-            e.classList.add('end');
-        })
+            e.classList.add('success');
+            e.classList.add('end')
+        });
+    }
+
+    const reset = () => {
+        state.replay = false;
+        clearInterval(state.interval);
+        clearTimeout(state.timeout);
+        $all('.card').forEach(e => {
+            e.classList.remove('success');
+            e.classList.remove('end');
+            e.classList.remove('active');
+        });
+        state.score = 0;
+        state.cardClick = null;
+        state.start = false;
+        state.card = false;
+        state.play = false;
+        $('.score').innerText = state.score;
     }
 
     const replay = () => {
+        if(!state.replay) return;
+        reset();
         startClick();
     }
 
     $('.startBtn').addEventListener('click', startClick);
-    $('.hintBtn').addEventListener('click', () => hint(3));
     $('.reStartBtn').addEventListener('click', replay);
+    $('.hintBtn').addEventListener('click', () => hint(3));
 }

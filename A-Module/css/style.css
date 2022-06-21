@@ -1,0 +1,111 @@
+* {margin: 0; padding: 0; box-sizing: border-box; color: #333;}
+a {text-decoration: none; color: inherit;}
+i {font-size: 2rem !important; cursor: pointer;}
+li {list-style: none;}
+img {vertical-align: middle;}
+button{cursor: pointer;}
+
+.none {display: none;}
+.block {display: block;}
+.flex {display: flex;}
+.grid {display: grid;}
+.rel {position: relative;}
+.abs {position: absolute;}
+.visit {background: #ffc500;}
+
+/* main */
+header {height: 100px; width: 1440px; margin: 0 auto;}
+header > div {position: fixed; width: 1440px; justify-content: space-between;}
+nav {width: 50px;}
+.fa-bars {display: block !important;}
+.fa-close {display: none !important;}
+nav > label {width: 50px; text-align: center;}
+nav .fa {line-height: 100px;}
+nav > div {left: 0; right: 50px; justify-content: space-around; width: 0; height: 100px; line-height: 100px; overflow: hidden; transition: .3s;}
+nav > div button {width: 100px; height: 40px; border: none; border-radius: 5px; background: #ccc; transition: .3s; font-weight: bold;}
+nav > div button:hover {background: #ffc500;}
+input[id="menu"]:checked ~ header .fa-bars {display: none !important;}
+input[id="menu"]:checked ~ header .fa-close {display: block !important;}
+input[id="menu"]:checked ~ header nav > div {left: -350px; width: 350px;}
+
+.sns {width: 50px;}
+.sns > label {width: 50px; text-align: center;}
+.sns > label i {line-height: 100px;}
+.sns > div {justify-content: space-around; top: 0; bottom: 0; left: 50px; right: 0; line-height: 100px; overflow: hidden; transition: .3s;}
+input[id="sns"]:checked ~ header .sns > div {right: -200px;}
+input[id="sns"]:checked ~ header .sns > div > a:nth-child(1) > img {animation: .3s sns linear both}
+input[id="sns"]:checked ~ header .sns > div > a:nth-child(2) > img {animation: .3s .3s sns linear both}
+input[id="sns"]:checked ~ header .sns > div > a:nth-child(3) > img {animation: .3s .6s sns linear both}
+@keyframes sns {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+/*
+ffc500
+0082be
+00abe7
+0078a3
+*/
+section {width: 1440px; margin: 0 auto; justify-content: space-between;}
+section > article > .title {font-size: 2rem; text-align: center;}
+section > article > .title > span {width: 100px; height: 3px; background: #ffc500; top: 50%;}
+section > article > .title > span:nth-child(1) {left: 20px;}
+section > article > .title > span:nth-child(2) {right: 20px;}
+section > article > .title > span::before {content: ""; width: 15px; height: 15px; border-radius: 50%; background: #ffc500; position: absolute; top: 50%; transform: translateY(-50%); transition: .3s;}
+section > article > .title > span:nth-child(1)::before {left: 100px;}
+section > article > .title > span:nth-child(2)::before {right: 100px;}
+section > article > .title:hover > span:nth-child(1)::before {left: 0;}
+section > article > .title:hover > span:nth-child(2)::before {right: 0;}
+
+section > article > .btn {padding: 10px; text-align: end;}
+section > article > .btn > button {width: 100px; height: 40px; background: #ffc500; border: none; border-radius: 5px;}
+section > article > .btn > button:hover {border: 1px solid #333;}
+section > article > .btn:nth-child(1) > button {animation: btn 3s linear 0s infinite both;}
+section > article > .btn:nth-child(2) > button {animation: btn 3s linear 1s infinite both;}
+section > article > .btn:nth-child(3) > button {animation: btn 3s linear 2s infinite both;}
+
+@keyframes btn {
+    0% {background: #ffc500;}
+    50% {background: #fe0;}
+    100% {background: #ffc500;}
+}
+
+footer {line-height: 100px; text-align: center;}
+
+/* sub1 */
+path {fill: #aaa; transition: .3s;}
+path:hover {fill: #333;}
+
+/* sub2 */
+.eventNotice {width: 800px; margin: 30px auto;}
+.board { width: 530px; grid-template-columns: repeat(4, 125px); gap: 10px; margin: 0 auto;}
+.cards {width: 125px; height: 175px; border: 1px solid #333; perspective: 500px; border-radius: 10px;}
+.card {width: 100%; height: 100%; transition: .5s; backface-visibility: hidden; border-radius: 10px; overflow: hidden;}
+.front {background: green; transform: rotateY(-180deg);}
+.back {background: #aaa; transform: rotateY(0deg);}
+.cards.active > .front, .cards.success > .front {transform: rotateY(0deg);}
+.cards.active > .back, .cards.success > .back {transform: rotateY(180deg);}
+.cards.end {border: 3px solid red;}
+.cards.end.success {border: 3px solid green;}
+.cards.end .front p, .cards.success .front p {display: block;}
+.imgBox {width: 100%; height: 100%;}
+.imgBox > img {width: 100%; height: 100%; object-fit: cover;}
+.imgBox > p {background: rgba(255, 255, 255, 0.5); bottom: 20%; width: 100%; line-height: 200%; font-weight: bold; text-align: center;}
+
+.state {width: 530px; margin: 25px auto;}
+.state > div {justify-content: space-around;}
+.state > div > button {width: 125px; height: 40px;}
+.state > div > div {width: 175px; text-align: center; margin: 25px 0;}
+h3 {text-align: center;}
+.stamp {width: 800px; height: 200px; border: 1px solid #333; margin: 20px auto; justify-content: space-around; padding-top: 25px;}
+.stamp > div {border: 1px solid #333; width: 150px; height: 150px; line-height: 150px; border-radius: 50%; text-align: center; transform: rotate(-30deg);}
+.check {background-color: #ffc500; font-weight: bold;}
+
+/* sub3 */
+.reviewImg {width: 1440px; margin: 25px auto; text-align: center;}
+table {width: 1440px; margin: 50px auto; text-align: center;}
+table img {object-fit: cover; width: 100px; height: 100px; margin: 0 auto;}
+table tbody td {padding: 0 1rem; text-align: center; border-top: 1px solid #333;}
+table .content p {width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin: 0 auto;}
+.write {position: fixed; width: 100px; line-height: 40px; background: #0ef; bottom: 50px; right: 50px; border: none; border-radius: 5px;}
