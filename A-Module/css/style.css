@@ -79,80 +79,81 @@ input[id="sns"]:checked ~ footer .sns > div:nth-child(3) > img {animation: icon 
 #special > article {width: 1000px; height: 900px; margin: 0 auto;}
 #special > article > svg {width: 100%; height: 100%;}
 #special > article > svg > path {fill: none; stroke: #333;}
-#special > article > .info > div {padding: 10px; background: #fff; border: 5px solid #ffc500; border-radius: 10px; transform: translate(50px, 25px); z-index: 1;}
+#special > article > .info > p {cursor: default;}
+#special > article > .info > div {padding: 10px; background: #fff; border: 5px solid #ffc500; border-radius: 10px; transform: translate(50px, 50%); z-index: 1;}
 #special > article > .info > div > .img > img {width: 150px;}
 
 #special > article > .info:nth-child(2) > p {top: 53%; left: 61%;}
-#special > article > .info:nth-child(2) > div {top: 105vh; left: 61%; transition: .3s;}
-#special > article > .info:nth-child(2) > p:hover + div {top: 53%;}
+#special > article > .info:nth-child(2) > div {top: 100%; left: 61%; transition: .3s;}
+#special > article > .info:nth-child(2) > p:hover + div {top: 43%;}
 
 #special > article > .info:nth-child(3) > p {top: 56%; left: 32%;}
-#special > article > .info:nth-child(3) > div {top: 105vh; left: 32%; transition: .3s;}
-#special > article > .info:nth-child(3) > p:hover + div {top: 56%;}
+#special > article > .info:nth-child(3) > div {top: 100%; left: 32%; transition: .3s;}
+#special > article > .info:nth-child(3) > p:hover + div {top: 46%;}
 
 #special > article > .info:nth-child(4) > p {top: 85%; left: 45%;}
-#special > article > .info:nth-child(4) > div {top: 105vh; left: 45%; transition: .3s;}
-#special > article > .info:nth-child(4) > p:hover + div {top: 85%;}
+#special > article > .info:nth-child(4) > div {top: 100%; left: 45%; transition: .3s;}
+#special > article > .info:nth-child(4) > p:hover + div {top: 75%;}
 
 #special > article > .info:nth-child(5) > p {top: 66%; left: 27%;}
-#special > article > .info:nth-child(5) > div {top: 105vh; left: 27%; transition: .3s;}
-#special > article > .info:nth-child(5) > p:hover + div {top: 66%;}
+#special > article > .info:nth-child(5) > div {top: 100%; left: 27%; transition: .3s;}
+#special > article > .info:nth-child(5) > p:hover + div {top: 56%;}
 
 #special > article > .info:nth-child(6) > p {top: 50%; left: 76%;}
-#special > article > .info:nth-child(6) > div {top: 105vh; left: 76%; transition: .3s;}
-#special > article > .info:nth-child(6) > p:hover + div {top: 50%;}
+#special > article > .info:nth-child(6) > div {top: 100%; left: 76%; transition: .3s;}
+#special > article > .info:nth-child(6) > p:hover + div {top: 40%;}
 
 #special > article > .info:nth-child(7) > p {top: 33%; left: 71%;}
-#special > article > .info:nth-child(7) > div {top: 105vh; left: 71%; transition: .3s;}
-#special > article > .info:nth-child(7) > p:hover + div {top: 33%;}
+#special > article > .info:nth-child(7) > div {top: 100%; left: 71%; transition: .3s;}
+#special > article > .info:nth-child(7) > p:hover + div {top: 23%;}
 
-/* #special > article > .info:nth-child(8) > p {top: 0%; left: 0%;}
-#special > article > .info:nth-child(8) > div {top: 105vh; left: 0%; transition: .3s;}
-#special > article > .info:nth-child(8) > p:hover + div {top: 0%;} */
+#special > article > .info:nth-child(8) > p {top: 82%; left: 64%;}
+#special > article > .info:nth-child(8) > div {top: 100%; left: 64%; transition: .3s;}
+#special > article > .info:nth-child(8) > p:hover + div {top: 72%;}
 
-/* #special > article > .info:nth-child(9) > p {top: 0%; left: 0%;}
-#special > article > .info:nth-child(9) > div {top: 105vh; left: 0%; transition: .3s;}
-#special > article > .info:nth-child(9) > p:hover + div {top: 0%;} */
+#special > article > .info:nth-child(9) > p {top: 39%; left: 87%;}
+#special > article > .info:nth-child(9) > div {top: 100%; left: 87%; transition: .3s;}
+#special > article > .info:nth-child(9) > p:hover + div {top: 29%;}
 
-/* #special > article > .info:nth-child(10) > p {top: 0%; left: 0%;}
-#special > article > .info:nth-child(10) > div {top: 105vh; left: 0%; transition: .3s;}
-#special > article > .info:nth-child(10) > p:hover + div {top: 0%;} */
+#special > article > .info:nth-child(10) > p {top: 41%; left: 40%;}
+#special > article > .info:nth-child(10) > div {top: 100%; left: 40%; transition: .3s;}
+#special > article > .info:nth-child(10) > p:hover + div {top: 31%;}
 
-/* #special > article > .info:nth-child(11) > p {top: 0%; left: 0%;}
-#special > article > .info:nth-child(11) > div {top: 105vh; left: 0%; transition: .3s;}
-#special > article > .info:nth-child(11) > p:hover + div {top: 0%;} */
+#special > article > .info:nth-child(11) > p {top: 49%; left: 50%;}
+#special > article > .info:nth-child(11) > div {top: 100%; left: 50%; transition: .3s;}
+#special > article > .info:nth-child(11) > p:hover + div {top: 39%;}
 
-/* #special > article > .info:nth-child(12) > p {top: 0%; left: 0%;}
-#special > article > .info:nth-child(12) > div {top: 105vh; left: 0%; transition: .3s;}
-#special > article > .info:nth-child(12) > p:hover + div {top: 0%;} */
+#special > article > .info:nth-child(12) > p {top: 31%; left: 53%;}
+#special > article > .info:nth-child(12) > div {top: 100%; left: 53%; transition: .3s;}
+#special > article > .info:nth-child(12) > p:hover + div {top: 21%;}
 
-/* #special > article > .info:nth-child(13) > p {top: 0%; left: 0%;}
-#special > article > .info:nth-child(13) > div {top: 105vh; left: 0%; transition: .3s;}
-#special > article > .info:nth-child(13) > p:hover + div {top: 0%;} */
+#special > article > .info:nth-child(13) > p {top: 71%; left: 43%;}
+#special > article > .info:nth-child(13) > div {top: 100%; left: 43%; transition: .3s;}
+#special > article > .info:nth-child(13) > p:hover + div {top: 61%;}
 
-/* #special > article > .info:nth-child(14) > p {top: 0%; left: 0%;}
-#special > article > .info:nth-child(14) > div {top: 105vh; left: 0%; transition: .3s;}
-#special > article > .info:nth-child(14) > p:hover + div {top: 0%;} */
+#special > article > .info:nth-child(14) > p {top: 91%; left: 21%;}
+#special > article > .info:nth-child(14) > div {top: 100%; left: 21%; transition: .3s;}
+#special > article > .info:nth-child(14) > p:hover + div {top: 81%;}
 
-/* #special > article > .info:nth-child(15) > p {top: 0%; left: 0%;}
-#special > article > .info:nth-child(15) > div {top: 105vh; left: 0%; transition: .3s;}
-#special > article > .info:nth-child(15) > p:hover + div {top: 0%;} */
+#special > article > .info:nth-child(15) > p {top: 63%; left: 12%;}
+#special > article > .info:nth-child(15) > div {top: 100%; left: 12%; transition: .3s;}
+#special > article > .info:nth-child(15) > p:hover + div {top: 53%;}
 
-/* #special > article > .info:nth-child(16) > p {top: 0%; left: 0%;}
-#special > article > .info:nth-child(16) > div {top: 105vh; left: 0%; transition: .3s;}
-#special > article > .info:nth-child(16) > p:hover + div {top: 0%;} */
+#special > article > .info:nth-child(16) > p {top: 43%; left: 17%;}
+#special > article > .info:nth-child(16) > div {top: 100%; left: 17%; transition: .3s;}
+#special > article > .info:nth-child(16) > p:hover + div {top: 33%;}
 
-/* #special > article > .info:nth-child(17) > p {top: 0%; left: 0%;}
-#special > article > .info:nth-child(17) > div {top: 105vh; left: 0%; transition: .3s;}
-#special > article > .info:nth-child(17) > p:hover + div {top: 0%;} */
+#special > article > .info:nth-child(17) > p {top: 29%; left: 7%;}
+#special > article > .info:nth-child(17) > div {top: 100%; left: 7%; transition: .3s;}
+#special > article > .info:nth-child(17) > p:hover + div {top: 19%;}
 
-/* #special > article > .info:nth-child(18) > p {top: 0%; left: 0%;}
-#special > article > .info:nth-child(18) > div {top: 105vh; left: 0%; transition: .3s;}
-#special > article > .info:nth-child(18) > p:hover + div {top: 0%;} */
+#special > article > .info:nth-child(18) > p {top: 13%; left: 17%;}
+#special > article > .info:nth-child(18) > div {top: 100%; left: 17%; transition: .3s;}
+#special > article > .info:nth-child(18) > p:hover + div {top: 3%;}
 
-/* #special > article > .info:nth-child(19) > p {top: 0%; left: 0%;}
-#special > article > .info:nth-child(19) > div {top: 105vh; left: 0%; transition: .3s;}
-#special > article > .info:nth-child(19) > p:hover + div {top: 0%;} */
+#special > article > .info:nth-child(19) > p {top: 27%; left: 31%;}
+#special > article > .info:nth-child(19) > div {top: 100%; left: 31%; transition: .3s;}
+#special > article > .info:nth-child(19) > p:hover + div {top: 17%;}
 
 
 /* sub2 */
