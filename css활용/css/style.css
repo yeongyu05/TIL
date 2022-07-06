@@ -1,0 +1,76 @@
+* {box-sizing: border-box; color: #333; font-family: sans-serif;}
+.flex {display: flex;}
+/* input {display: none;} */
+
+.rel {position: relative;}
+.abs {position: absolute;}
+.first {background: #888;}
+.second {background: #777;}
+.third {background: #666;}
+
+/* infinite */
+#root > fieldset > .infinite {overflow: hidden; width: 800px; margin: 0 auto;}
+#root > fieldset > .infinite > .container {width: calc(800px * 4); animation: 7.5s slide infinite;}
+#root > fieldset > .infinite > .container > div {text-align: center; width: calc(100% / 4); line-height: 450px; font-size: 3rem; font-weight: bold;}
+@keyframes slide {
+    0% {transform: translateX(0);}
+    26.64% {transform: translateX(0);}
+
+    33.3% {transform: translateX(-800px);}
+    59.94% {transform: translateX(-800px);}
+
+    66.6% {transform: translateX(-1600px);}
+    93.24% {transform: translateX(-1600px);}
+
+    99.9999% {transform: translateX(-2400px);}
+    100% {transform: translateX(0);}
+}
+
+/* button */
+#root > fieldset > .button {width: 800px; margin: 0 auto; overflow: hidden;}
+#root > fieldset > .button > .container {width: calc(800px * 5); transition: .5s;}
+#root > fieldset > .button > .container > div {width: calc(100% / 5); text-align: center; line-height: 450px; font-size: 3rem; font-weight: bold;}
+#root > fieldset > .button > .container > div > .prev {left: 5%;}
+#root > fieldset > .button > .container > div > .next {right: 5%;}
+
+input[id="slideP"]:checked ~ .button > .container {margin-left: -2400px; animation: .5s slideP;}
+input[id="slide1"]:checked ~ .button > .container {margin-left: -800px;}
+input[id="slide2"]:checked ~ .button > .container {margin-left: -1600px;}
+input[id="slide3"]:checked ~ .button > .container {margin-left: -2400px;}
+input[id="slideN"]:checked ~ .button > .container {margin-left: -800px; animation: .5s slideN;}
+
+input[id="slideP"]:checked ~ .button > .container > .slide3,
+input[id="slide1"]:checked ~ .button > .container > .slide1,
+input[id="slide2"]:checked ~ .button > .container > .slide2,
+input[id="slide3"]:checked ~ .button > .container > .slide3,
+input[id="slideN"]:checked ~ .button > .container > .slide1 {
+    z-index: 1;
+}
+
+@keyframes slideP {
+    0% {margin-left: -800px;}
+    99.9999% {margin-left: 0;}
+    100% {margin-left: -2400px;}
+}
+
+@keyframes slideN {
+    0% {margin-left: -2400px;}
+    99.9999% {margin-left: -3200px;}
+    100% {margin-left: -800px;}
+}
+
+/* fade */
+#root > fieldset > .fade {width: 800px; height: 450px; margin: 0 auto; overflow: hidden;}
+#root > fieldset > .fade > div {width: 800px; text-align: center; line-height: 450px; font-size: 3rem; font-weight: bold;}
+#root > fieldset > .fade > div > .prev {left: 5%;}
+#root > fieldset > .fade > div > .next {right: 5%;}
+
+input[id="slide1"]:checked ~ .fade > .slide1 {opacity: 1;}
+input[id="slide2"]:checked ~ .fade > .slide2 {opacity: 1;}
+input[id="slide3"]:checked ~ .fade > .slide3 {opacity: 1;}
+
+input[id="slide1"]:checked ~ .fade > .container > .slide1,
+input[id="slide2"]:checked ~ .fade > .container > .slide2,
+input[id="slide3"]:checked ~ .fade > .container > .slide3 {
+    z-index: 1;
+}
