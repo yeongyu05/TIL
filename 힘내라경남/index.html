@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>main</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.css">
+</head>
+<body>
+    <div id="root" class="full grid">
+        <input type="checkbox" name="menu" id="menu" class="none">
+        <input type="checkbox" name="sns" id="sns" class="none">
+        <header>
+            <div class="inner flex">
+                <div class="slogon">
+                    <a href="index.html"><img src="./images/logo.png" alt="logo"></a>
+                </div>
+                <nav class="rel">
+                    <label for="menu"><i class="fa fa-bars"></i><i class="fa fa-close"></i></label>
+                    <div class="menu flex abs">
+                        <div><a href="./sub1.html">특산품 안내</a></div>
+                        <div><a href="./sub2.html">이벤트</a></div>
+                        <div><a href="./sub3.html">구매후기</a></div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <section id="index" class="inner flex">
+            <article class="grid">
+                <h1 class="title">특산품 안내</h1>
+                <div class="img"><img src="./images/main1.png" alt="main1"></div>
+                <div class="btn"><a href="./sub1.html">바로가기</a></div>
+            </article>
+            <article class="grid">
+                <h1 class="title">이벤트</h1>
+                <div class="img"><img src="./images/main2.png" alt="main2"></div>
+                <div class="btn"><a href="./sub2.html">바로가기</a></div>
+            </article>
+            <article class="grid">
+                <h1 class="title">구매후기</h1>
+                <div class="img"><img src="./images/main3.png" alt="main3"></div>
+                <div class="btn"><a href="./sub3.html">바로가기</a></div>
+            </article>
+        </section>
+        <footer></footer>
+    </div>
+    <script src="./js/script.js"></script>
+</body>
+</html>

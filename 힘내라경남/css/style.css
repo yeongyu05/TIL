@@ -1,0 +1,50 @@
+* {margin: 0; padding: 0; box-sizing: border-box; color: #333; font-family: sans-serif;}
+a {text-decoration: none; color: inherit;}
+/* li {list-style: none;} */
+img {vertical-align: middle;}
+i {font-size: 2rem !important; cursor: pointer;}
+button {cursor: pointer;}
+
+/* base setting */
+#root {padding-top: 100px;}
+#root.full {grid-template-rows: 1fr 100px; width: 100vw; height: 100vh;}
+.inner {width: 1440px; margin: 0 auto;}
+.none {display: none;}
+.block {display: block;}
+.flex {display: flex;}
+.grid {display: grid;}
+.rel {position: relative;}
+.abs {position: absolute;}
+.visit > a {background: #ffc500 !important;}
+
+/* main */
+/* header */
+header {position: fixed; top: 0; left: 0; right: 0; z-index: 2;}
+header > div {justify-content: space-between;}
+header > div > nav > label > .fa-bars {display: block !important; line-height: 100px;}
+header > div > nav > label > .fa-close {display: none !important; line-height: 100px;}
+header > div > nav > .menu {justify-content: space-between; top: 50%; left: 0; right: 100%; transform: translateY(-50%); transition: .3s; overflow: hidden; margin-right: 20px;}
+header > div > nav > .menu > div {width: 105px; text-align: center;}
+header > div > nav > .menu > div > a {white-space: nowrap; display: block; padding: .5rem; transition: .3s; background: #ccc;}
+header > div > nav > .menu > div > a:hover {background: #ffc500;}
+input[id="menu"]:checked ~ header .fa-bars {display: none !important;}
+input[id="menu"]:checked ~ header .fa-close {display: block !important;}
+input[id="menu"]:checked ~ header .menu {left: -400px;}
+input[id="menu"]:checked ~ header .menu > div:nth-child(1) {animation: icon .3s linear .0s both;}
+input[id="menu"]:checked ~ header .menu > div:nth-child(2) {animation: icon .3s linear .3s both;}
+input[id="menu"]:checked ~ header .menu > div:nth-child(3) {animation: icon .3s linear .6s both;}
+
+/* section */
+#index {justify-content: space-between;}
+#index > article {grid-template-rows: auto 1fr auto;}
+#index > article > .title {font-size: 2rem; text-align: center;}
+#index > article > .img > img {width: 100%; height: 100%; object-fit: cover;}
+#index > article > .btn {padding: 10px;}
+#index > article > .btn > a {float: right; padding: .5rem 1rem; border-radius: 5px; text-align: center; background: #ffc500; transition: .3s;}
+#index > article > .btn > a:hover {color: #fff;}
+
+
+@keyframes icon {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
